@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace BreakoutGameLab001
 {
     // 磚塊類別
-    class Brick
+    class Brick : Drawable
     {
         // 屬性
         public int X { get; set; }
@@ -15,6 +12,7 @@ namespace BreakoutGameLab001
         public int Width { get; set; }
         public int Height { get; set; }
         public Color Color { get; set; }
+
         // 建構子
         public Brick(int x, int y, int width, int height, Color color)
         {
@@ -25,9 +23,11 @@ namespace BreakoutGameLab001
             Color = color;
         }
 
-        // 加入其他方法
-
         // 繪製磚塊
-
+        public override void Draw(Graphics gr)
+        {
+            gr.FillRectangle(new SolidBrush(this.Color), X, Y, Width, Height);
+            gr.DrawRectangle(new Pen(Color.Black, 1), X, Y, Width, Height);
+        }
     }
 }
